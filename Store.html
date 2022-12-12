@@ -1,0 +1,246 @@
+<?php
+	ob_start();
+	session_start();
+	require_once 'dbconnect.php';
+	
+	// if session is not set this will redirect to login page
+	if( !isset($_SESSION['user']) ) {
+		header("Location: index.html");
+		exit;
+	}
+	// select loggedin users detail
+	$res=mysql_query("SELECT * FROM users WHERE userId=".$_SESSION['user']);
+	$userRow=mysql_fetch_array($res);
+?>
+<!DOCTYPE html>
+<html>
+<head>
+<title>FURNITURE STORE MANAGEMENT SYSTEM</title>
+<!-- for-mobile-apps -->
+<link href="css/style2.css" rel="stylesheet" type="text/css"  media="all" />
+		<link href='http://fonts.googleapis.com/css?family=Londrina+Solid|Coda+Caption:800|Open+Sans' rel='stylesheet' type='text/css'>
+		<script type="text/javascript" src="js/jquery-1.3.2.js"></script>
+		<script type="text/javascript" src="js/jquery.livequery.js"></script>
+		<link href="css/style1.css" rel="stylesheet" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+		function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- //for-mobile-apps -->
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+<!-- js -->
+<script src="js/jquery-1.11.1.min.js"></script>
+<!-- //js -->
+<!-- start-smoth-scrolling -->
+<script type="text/javascript" src="js/move-top.js"></script>
+<script type="text/javascript" src="js/easing.js"></script>
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+		$(".scroll").click(function(event){		
+			event.preventDefault();
+			$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+		});
+	});
+</script>
+<!-- start-smoth-scrolling -->
+
+</head>
+	
+<body>
+<!-- banner -->
+	<div class="banner1">
+		<div class="container">
+			<div class="header-nav">
+				<nav class="navbar navbar-default">
+					<!-- Brand and toggle get grouped for better mobile display -->
+					<div class="navbar-header">
+					  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					  </button>
+						<div class="logo">
+							<a class="navbar-brand" href="index.html">Welcome to<span>Modern Home</span></a>
+						</div>
+					</div>
+
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
+						<ul class="nav navbar-nav cl-effect-14">
+							<li><a href="index.html">Home</a></li>
+                            <li><a href="index.php">Sign In</a></li>
+							<li><a href="about.html">About</a></li>
+							<li class="active"><a href="Store.html" class="active">Store</a></li>
+							<li><a href="contact.html">Contact Us</a></li>
+						</ul>
+						<ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+			  <span class="glyphicon glyphicon-user"></span>&nbsp;Hi' <?php echo $userRow['userEmail']; ?>&nbsp;<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="logout.php?logout"><span class="glyphicon glyphicon-log-out"></span>&nbsp;Sign Out</a></li>
+              </ul>
+            </li>
+          </ul>
+					</div><!-- /.navbar-collapse -->	
+				</nav>
+			</div>
+			<br><br><br><br><br>
+			<div class="banner-info1">
+				<h3>Welcome To <span>Modern Home</span></h3>
+				<p>This family home combines the luxuries of modern living with 
+					traditional appeal to create a comfortable yet stylish space.
+				</p>
+				
+			</div>
+		</div>
+	</div>
+
+	<div id="wrap" align="center">
+		
+		<a id="show_cart" >View My</a>
+		
+		<ul>
+			<li id="1">
+				<a href="cardadd.php"><img src="images/01.jpg" width="250" height="250"  class="items" alt="" /></a>
+				<br clear="all" />
+				<a href="cardadd.php"> <div>Dining Table</div></a>
+			</li>
+			
+			<li id="2">
+				<a href="cardadd.php"><img src="images/013.jpg" width="250" height="250" class="items" alt="" /></a>
+				<br clear="all" />
+				<a href="cardadd.php"><div>Bed</div></a>
+			</li>
+			
+			<li id="3">
+				<a href="cardadd.php"><img src="images/05.jpg"width="250" height="250"  class="items" alt="" /></a>
+				<br clear="all" />
+				<a href="cardadd.php"><div>Chear</div></a>
+			</li>
+			
+			<li id="4">
+				<a href="cardadd.php"><img src="images/03.jpg" width="250" height="250" class="items" alt="" /></a>
+				<br clear="all" />
+				<a href="cardadd.php"><div>Table</div></a>
+			</li>
+			
+			<li id="5">
+				<img src="images/07.jpg" width="250" height="250"  class="items" alt="" />
+				<br clear="all" />
+				<a href="cardadd.php"> <div>Chear</div></a>
+			</li>
+			
+			<li id="6">
+				<img src="images/019.jpg" width="250" height="250" class="items" alt="" />
+				<br clear="all" />
+				<div>Chear</div>
+			</li>
+			
+			<li id="7">
+				<img src="images/015.jpg"width="250" height="250"  class="items" alt="" />
+				<br clear="all" />
+				<div>Bed</div>
+			</li>
+			
+			<li id="8">
+				<img src="images/010.jpg" width="250" height="250" class="items" alt="" />
+				<br clear="all" />
+				<div>Table</div>
+			</li>
+			
+			<li id="9">
+				<img src="images/012.jpg" width="250" height="250"  class="items" alt="" />
+				<br clear="all" />
+				<a href="cardadd.php"> <div>Dining Table</div></a>
+			</li>
+			
+			<li id="10">
+				<img src="images/013.jpg" width="250" height="250" class="items" alt="" />
+				<br clear="all" />
+				<div>Bed</div>
+			</li>
+			
+			<li id="11">
+				<img src="images/021.jpg"width="250" height="250"  class="items" alt="" />
+				<br clear="all" />
+				<div>Table</div>
+			</li>
+			
+			<li id="12">
+				<img src="images/015.jpg" width="250" height="250" class="items" alt="" />
+				<br clear="all" />
+				<div>Bad</div>
+			</li>
+		</ul>	
+	</div>
+<!--footer-->
+	<div class="footer">
+		<div class="container">
+			<div class="footer-row">
+				<div class="col-md-4 footer-grids">
+					<h4><a href="index.html">Welcome to<span>Modern Home</span></a></h4>
+					<ul class="social-icons">
+						<li><a href="https://mail.google.com/mail/" class="g"></a></li>
+						<li><a href="https://in.linkedin.com/in/govind-patidar-2b636b112" class="in"></a></li>
+						<li><a href="https://twitter.com/" class="t"></a></li>
+						<li><a href="http://www.facebook.com/" class="facebook"></a></li>
+					</ul>
+				</div>
+				<div class="col-md-3 footer-grids">
+					<h3>Navigation</h3>					
+					<ul>
+						<li><a href="index.html">Home</a></li>
+						<li><a href="about.html">About us</a></li>
+						<li><a href="Store.html">Store</a></li>
+						<li><a href="contact.html">Contact</a></li>
+					</ul>
+				</div>
+				<div class="col-md-2 footer-grids">
+					<h3>Support</h3>
+					<ul>
+						<li><a href="#">Mobile No:0765386679</a></li>
+						<li><a href="#">Help Center</a></li>
+						<li><a href="#">Address</a></li>
+					</ul>
+				</div>
+				<div class="col-md-2 footer-grids">
+					<h3>Contact us</h3>
+					<ul>
+						<li>Nairobi</li>
+						<li><a href="gmail.com">abdiwahab@gmail.com</a></li>
+						<li>eastleigh</li>
+					</ul>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+	<div class="footer-bottom">
+		<div class="container">		
+			<p>© 2022 www.abdi.com <a href="#"></a></p>					
+		</div>
+	</div>
+<!--//footer-->		
+<!-- for bootstrap working -->
+	<script src="js/bootstrap.js"></script>
+<!-- //for bootstrap working -->
+<!-- here stars scrolling icon -->
+	<script type="text/javascript">
+		$(document).ready(function() {
+			/*
+				var defaults = {
+				containerID: 'toTop', // fading element id
+				containerHoverID: 'toTopHover', // fading element hover id
+				scrollSpeed: 1200,
+				easingType: 'linear' 
+				};
+			*/
+								
+			$().UItoTop({ easingType: 'easeOutQuart' });
+								
+			});
+	</script>
+<!-- //here ends scrolling icon -->
+</body>
+</html>
